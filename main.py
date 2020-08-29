@@ -82,7 +82,9 @@ def handleTweet():
 	print(message)
 
 	# Read the newest 100 lines
-	with open("main.html", 'r+') as f:
+	with open("main.html", 'a+') as f:
+		f.seek(0) # We open with 'a+' to create the file in case it doesn't exist. As such, we need to seek to the
+		# beginning of the file again
 		content = list(islice(f, 100))
 		
 	# Add the new message 
